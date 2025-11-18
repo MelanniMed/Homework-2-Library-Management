@@ -27,6 +27,7 @@ int main() {
         cout << "4. List active loans" << endl;
         cout << "5. Borrow a book" << endl;
         cout << "6. Return a book" << endl;
+        cout << "7. Remove a book" << endl;
         cout << "0. Exit" << endl;
         cout << "Select option: ";
         cin >> option;
@@ -63,6 +64,15 @@ int main() {
             cout << "Return date (YYYY-MM-DD): ";
             cin >> date;
             library.returnBook(memberId, isbn, date);
+            cout << endl;
+        }
+        else if (option == 7) {
+            string memberId, isbn;
+            cout << "Member ID: ";
+            cin >> memberId;
+            cout << "Book ISBN to remove: ";
+            cin >> isbn;
+            library.removeBook(memberId, isbn);
             cout << endl;
         }
     } while (option != 0);
