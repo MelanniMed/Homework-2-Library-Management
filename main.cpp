@@ -24,10 +24,10 @@ int main() {
     int option;
     do {
         cout << "===== Library Menu =====" << endl;
-        cout << "1. List books" << endl;
-        cout << "2. List members" << endl;
-        cout << "3. List all loans" << endl;
-        cout << "4. List active loans" << endl;
+        cout << "1. List of books" << endl;
+        cout << "2. List of members" << endl;
+        cout << "3. List of all loans" << endl;
+        cout << "4. List of active loans" << endl;
         cout << "5. Borrow a book" << endl;
         cout << "6. Return a book" << endl;
         cout << "7. Remove a book" << endl;

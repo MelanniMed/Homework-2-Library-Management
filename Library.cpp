@@ -186,12 +186,12 @@ bool Library::removeMember(const string& actingMemberId, const string& memberId)
     return false;
 }
 void Library::addCD(const CD& cd) {
-    cds.push_back(cd);
+    CDs.push_back(cd);
 }
 
 void Library::listCDs() const {
     cout << "=== CDs in library ===" << endl;
-    for (const auto& cd : cds) {
+    for (const auto& cd : CDs) {
         cd.printInfo();
     }
     cout << endl;
@@ -203,7 +203,7 @@ bool Library::borrowCD(const string& memberId, const string& cdId, const string&
         return false;
     }
 
-    for (const auto& cd : cds) {
+    for (const auto& cd : CDs) {
         if (cd.getId() == cdId) {
             for (const auto& loan : loans) {
                 if (loan.getIsbn() == cdId && loan.isActive()) {
