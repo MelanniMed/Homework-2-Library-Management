@@ -30,6 +30,9 @@ public:
     bool returnBook(const string& memberId, const string& isbn, const string& returnDate);
     bool removeBook(const string& memberId, const string& isbn);
     bool removeMember(const string& actingMemberId, const string& memberId);
+    bool borrowCD(const string& memberId, const string& cdId, const string& borrowDate);
+    bool returnCD(const string& memberId, const string& cdId, const string& returnDate);
+    void listCDs() const;
 };
 
 #endif // LIBRARY_H
