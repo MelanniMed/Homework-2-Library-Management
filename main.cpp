@@ -18,6 +18,10 @@ int main() {
     library.addMember(Member("Alice", "M01", 3));
     library.addMember(Member("Bob", "M02", 5));
 
+    library.addCD(CD("The Dark Side of the Moon", "Pink Floyd", "CD001", 1973));
+    library.addCD(CD("Thriller", "Michael Jackson", "CD002", 1982));
+    
+
     int option;
     do {
         cout << "===== Library Menu =====" << endl;

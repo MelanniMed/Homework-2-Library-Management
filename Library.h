@@ -5,6 +5,7 @@
 #include "Book.h"
 #include "Member.h"
 #include "Loan.h"
+#include "CD.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ private:
 
     Book* findBook(const string& isbn);
     Member* findMember(const string& memberId);
+    CD* findCD(const string& cdId);
     int countActiveLoansForMember(const string& memberId) const;
     bool isBookAvailable(const string& isbn) const;
     Loan* findActiveLoan(const string& memberId, const string& isbn);
@@ -23,6 +25,7 @@ private:
 public:
     void addBook(const Book& book);
     void addMember(const Member& member);
+    void addCD(const CD& cd);
     void listBooks() const;
     void listMembers() const;
     void listLoans(bool onlyActive = false) const;
