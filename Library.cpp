@@ -185,5 +185,47 @@ bool Library::removeMember(const string& actingMemberId, const string& memberId)
     cout << "Member to remove not found." << endl;
     return false;
 }
+void Library::addCD(const CD& cd) {
+    cds.push_back(cd);
+}
+
+void Library::listCDs() const {
+    cout << "=== CDs in library ===" << endl;
+    for (const auto& cd : cds) {
+        cd.printInfo();
+    }
+    cout << endl;
+}
+bool Library::borrowCD(const string& memberId, const string& cdId, const string& borrowDate) {
+    Member* member = findMember(memberId);
+    if (!member) {
+        cout << "Member not found." << endl;
+        return false;
+    }
+
+    for (const auto& cd : cds) {
+        if (cd.getId() == cdId) {
+            for (const auto& loan : loans) {
+                if (loan.getIsbn() == cdId && loan.isActive()) {
+                    cout << "CD is currently not available." << endl;
+                    return false;
+                }
+            }
+
+            int activeLoans = countActiveLoansForMember(memberId);
+            if (activeLoans >= member->getMaxBooks()) {
+                cout << "Member has reached the maximum number of active loans." << endl;
+                return false;
+            }
+
+            loans.push_back(Loan(cdId, memberId, borrowDate));
+            cout << "CD borrowed successfully." << endl;
+            return true;
+        }
+    }
+
+    cout << "CD not found." << endl;
+    return false;
+}
 
 
