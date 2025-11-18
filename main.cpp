@@ -85,6 +85,32 @@ int main() {
             library.removeMember(actingMemberId, memberIdToRemove);
             cout << endl;
         }
+        else if (option == 9) {
+            library.listCDs();
+        }
+        else if (option == 10) {
+            string memberId, cdId, date;
+            cout << "Member ID: ";
+            cin >> memberId;
+            cout << "CD ID: ";
+            cin >> cdId;
+            cout << "Borrow date (YYYY-MM-DD): ";
+            cin >> date;
+            library.borrowCD(memberId, cdId, date);
+            cout << endl;
+        }
+        else if (option == 11) {
+            string memberId, cdId, date;
+            cout << "Member ID: ";
+            cin >> memberId;
+            cout << "CD ID: ";
+            cin >> cdId;
+            cout << "Return date (YYYY-MM-DD): ";
+            cin >> date;
+            library.returnCD(memberId, cdId, date);
+            cout << endl;
+        }
+        
     } while (option != 0);
 
     cout << "Goodbye!" << endl;
