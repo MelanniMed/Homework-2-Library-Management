@@ -20,7 +20,6 @@ int main() {
 
     library.addCD(CD("The Dark Side of the Moon", "Pink Floyd", "CD001", 1973));
     library.addCD(CD("Thriller", "Michael Jackson", "CD002", 1982));
-    
 
     int option;
     do {
@@ -33,6 +32,9 @@ int main() {
         cout << "6. Return a book" << endl;
         cout << "7. Remove a book" << endl;
         cout << "8. Remove a member" << endl;
+        cout << "9. List of CDs" << endl;
+        cout << "10. Borrow a CD" << endl;
+        cout << "11. Return a CD" << endl;
         cout << "0. Exit" << endl;
         cout << "Select option: ";
         cin >> option;

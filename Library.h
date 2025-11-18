@@ -14,6 +14,7 @@ private:
     vector<Book> books;
     vector<Member> members;
     vector<Loan> loans;
+    vector<CD> CDs;
 
     Book* findBook(const string& isbn);
     Member* findMember(const string& memberId);
@@ -39,5 +40,3 @@ public:
 };
 
 #endif // LIBRARY_H
-
-
