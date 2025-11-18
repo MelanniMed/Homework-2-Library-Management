@@ -138,3 +138,52 @@ bool Library::returnBook(const string& memberId, const string& isbn, const strin
     return true;
 }
 
+bool Library::removeBook(const string& memberId, const string& isbn) {
+    Member* member = findMember(memberId);
+    if (!member) {
+        cout << "Member not found. Cannot remove book." << endl;
+        return false;
+    }
+
+    for (auto it = books.begin(); it != books.end(); ++it) {
+        if (it->getIsbn() == isbn) {
+            for (const auto& loan : loans) {
+                if (loan.getIsbn() == isbn && loan.isActive()) {
+                    cout << "Cannot remove book. It is currently on loan." << endl;
+                    return false;
+                }
+            }
+            books.erase(it);
+            cout << "Book removed successfully by member " << member->getName() << "." << endl;
+            return true;
+        }
+    }
+    cout << "Book not found." << endl;
+    return false;
+}
+
+bool Library::removeMember(const string& actingMemberId, const string& memberId) {
+    Member* actingMember = findMember(actingMemberId);
+    if (!actingMember) {
+        cout << "Acting member not found. Cannot remove member." << endl;
+        return false;
+    }
+
+    for (auto it = members.begin(); it != members.end(); ++it) {
+        if (it->getId() == memberId) {
+            if (countActiveLoansForMember(memberId) > 0) {
+                cout << "Cannot remove member. Member has active loans." << endl;
+                return false;
+            }
+
+            members.erase(it);
+            cout << "Member removed successfully by " << actingMember->getName() << "." << endl;
+            return true;
+        }
+    }
+
+    cout << "Member to remove not found." << endl;
+    return false;
+}
+
+
