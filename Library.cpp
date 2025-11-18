@@ -162,4 +162,28 @@ bool Library::removeBook(const string& memberId, const string& isbn) {
     return false;
 }
 
+bool Library::removeMember(const string& actingMemberId, const string& memberId) {
+    Member* actingMember = findMember(actingMemberId);
+    if (!actingMember) {
+        cout << "Acting member not found. Cannot remove member." << endl;
+        return false;
+    }
+
+    for (auto it = members.begin(); it != members.end(); ++it) {
+        if (it->getId() == memberId) {
+            if (countActiveLoansForMember(memberId) > 0) {
+                cout << "Cannot remove member. Member has active loans." << endl;
+                return false;
+            }
+
+            members.erase(it);
+            cout << "Member removed successfully by " << actingMember->getName() << "." << endl;
+            return true;
+        }
+    }
+
+    cout << "Member to remove not found." << endl;
+    return false;
+}
+
 
